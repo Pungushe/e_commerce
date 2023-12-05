@@ -6,5 +6,5 @@ def frontpage(request):
     return HttpResponse('Привет мир!')
 
 
-def contact(request):
-    return HttpResponse('Привет мир!')
+def contacts(request):
+    return HttpResponse('<h1>Контакты</h1>')
