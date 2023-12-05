@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+</head>
+<body>
+    <h1>Главная страница</h1>
+    <h4>
+        {% for product in products %}
+            <a href="{% url 'shop:detail' product.id %}"><p>Название: {{ product.name }}</p></a>
+            <p>Цена: {{ product.price }}</p>
+            <p>Описание: {{ product.description }}</p>
+        {% endfor %}
+    </h4>
+</body>
+</html>

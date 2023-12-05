@@ -2,9 +2,11 @@ from django.urls import path
 
 from . import views
 
+app_name = 'shop'
+
 urlpatterns = [
     # главнвая стрница
     path('', views.frontpage, name='frontpage'),
-    # контакты
-    path('contacts/', views.contacts, name='contacts'),
+    # товар
+    path('<int:pk>/', views.products, name='detail'),
 ]

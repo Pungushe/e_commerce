@@ -1,10 +1,19 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from . models import Product
 
 
 def frontpage(request):
-    return HttpResponse('Привет мир!')
+    products = Product.objects.all()
+    context = {
+        'products': products
+    }
+    return render(request, 'shop/frontpage.html', context)
 
+def products(request, pk):
+    product = Product.objects.get(id=pk)
 
-def contacts(request):
-    return HttpResponse('<h1>Контакты</h1>')
+    context = {
+        'product': product
+    }
+    return render(request, 'shop/products-detail.html', context=context)
