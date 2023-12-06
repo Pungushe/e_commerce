@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-
 {% load static %}
 
-<html lang="ru">
+<html lang="en">
 <head>
     <link rel="stylesheet" href="{% static 'shop/styles.css' %}">
 </head>
-<body class='bg-sky-500'>
-    <h1>Главная страница</h1>
+<body>
+    <nav>
+        <div class="flex">
+            <img class="h-6 w-6" src="{% static 'shop/images/shop.png' %}" alt="logo" />
+            <span class="text-xl font-semibold">Pro-Shop</span>
+        </div>
+    </nav>
     <h4>
         {% for product in products %}
             <a href="{% url 'shop:detail' product.id %}"><p>Название: {{ product.name }}</p></a>
