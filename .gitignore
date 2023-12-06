@@ -1,7 +1,7 @@
 /db.sqlite3
 /.idea
-/shop/__pycache__
-/requirements.txt
+__pycache__
 /venv
-/shop/migrations
-/.vscode
+migrations
+vscode
+node_modules
