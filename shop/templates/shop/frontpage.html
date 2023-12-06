@@ -6,6 +6,7 @@
             <a href="{% url 'shop:detail' product.id %}"><p>Название: {{ product.name }}</p></a>
             <p>Цена: {{ product.price }}</p>
             <p>Описание: {{ product.description }}</p>
+            <img src="{{ product.image.url }}" alt="image">
         {% endfor %}
     </h4>
 {% endblock  %}
