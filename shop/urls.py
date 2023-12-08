@@ -9,4 +9,6 @@ urlpatterns = [
     path('', views.frontpage, name='frontpage'),
     # товар
     path('<int:pk>/', views.products, name='detail'),
+    # товар
+    path('add-product', views.add_product, name='add'),
 ]

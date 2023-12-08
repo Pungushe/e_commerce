@@ -1,0 +1,10 @@
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Название" id="name">
+        <input type="text" name="price" placeholder="Цена" id="price">
+        <input type="text" name="description" placeholder="Описание" id="description">
+        <input type="file" accept="image/*" name="upload" id="upload">
+        <button type="submit" name="add product" value="add product">Добавить продукт</button>
+    </form>
+

@@ -17,3 +17,14 @@ def products(request, pk):
         'product': product
     }
     return render(request, 'shop/products-detail.html', context=context)
+
+def add_product(request):
+    if request.method == 'POST':
+        name=request.POST.get('name')
+        price=request.POST.get('price')
+        description=request.POST.get('description')
+        image=request.FILES['upload']
+
+        product = Product(name=name, price=price, description=description, image=image)
+        product.save()
+    return render(request, 'shop/add-product.html')
