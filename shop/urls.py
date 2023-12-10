@@ -13,4 +13,6 @@ urlpatterns = [
     path('add-product', views.add_product, name='add'),
     # обновить товар
     path('update-product/<int:pk>/', views.update_product, name='update'),
+    # удалить товар
+    path('delete-product/<int:pk>/', views.delete_product, name='delete'),
 ]

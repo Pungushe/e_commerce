@@ -37,9 +37,20 @@ def update_product(request, pk):
         product.description=request.POST.get('description')
         product.image=request.FILES.get('upload', product.image)
         product.save()
-        return redirect('/shop/')
+        return redirect('shop:frontpage')
 
     context = {
         'product': product
     }
     return render(request, 'shop/update-product.html', context)
+
+def delete_product(request, pk):
+    product = Product.objects.get(id=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('shop:frontpage')
+
+    context = {
+        'product': product
+    }
+    return render(request, 'shop/delete-product.html', context)

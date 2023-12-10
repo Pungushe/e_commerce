@@ -1,0 +1,18 @@
+{% extends "shop/base.html" %}
+
+{% block title %} Удалить товар {% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl m-10 font-bold text-center">Удалить товар</h1>
+        <form class="bg-white shadow-md m-10 w-3/5 rounded px-8 pt-6 pb-8 mb-4" method="post">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-gray text-sm font mb-2" for="">Вы уверены, что хотите удалить этот товар?</label>
+                <label class="block text-gray text-sm font mb-2" for="">{{ product.name }}</label>
+                <img class="w-40 h-40" src="{{ product.image.url }}" alt="">
+            </div>
+                <input class="bg-red-500 text-white py-2 px-5" type="submit" value="Подтвердить">
+                <a class="button bg-gray-500 text-white py-3 px-5" href="{% url 'shop:frontpage' %}">Отмена</a>
+        </form>
+{% endblock content %}
+
