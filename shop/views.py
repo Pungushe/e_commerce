@@ -1,6 +1,6 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from . models import Product
+from django.contrib.auth.decorators import login_required
 
 
 def frontpage(request):
@@ -17,16 +17,18 @@ def products(request, pk):
         'product': product
     }
     return render(request, 'shop/products-detail.html', context=context)
-
+@login_required
 def add_product(request):
     if request.method == 'POST':
         name=request.POST.get('name')
         price=request.POST.get('price')
         description=request.POST.get('description')
         image=request.FILES['upload']
+        seller=request.user
 
-        product = Product(name=name, price=price, description=description, image=image)
+        product = Product(name=name, price=price, description=description, image=image, seller=seller)
         product.save()
+        return redirect('shop:frontpage')
     return render(request, 'shop/add-product.html')
 
 def update_product(request, pk):

@@ -121,4 +121,5 @@ MEDIA_ROOT=BASE_DIR / 'media'
 MEDIA_URL='/media/'
 
 LOGIN_REDIRECT_URL = 'shop:frontpage'
+LOGIN_URL = 'users:login'
 # LOGOUT_REDIRECT_URL = 'shop:frontpage'

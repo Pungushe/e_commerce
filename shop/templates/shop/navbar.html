@@ -12,7 +12,7 @@
                 </div>
                 <div class="flex items-center space-x-1 ml-3">
                     <a href="{% url 'shop:frontpage' %}" class="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500">Домой</a>
-                    <a href="#" class="py-4 px-2 text-gray-500 font-semibold">О нас</a>
+                    <a class="py-4 px-2 text-gray-500 font-semibold" href="{% url 'shop:add' %}">Добавить товар</a>
                     <a href="#" class="py-4 px-2 text-gray-500 font-semibold">Контакты</a>
                     <a href="#" class="py-4 px-2 text-gray-500 font-semibold ">Корзина</a>
                     {% if request.user.is_authenticated %}
