@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from . models import Product
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import DeleteView
 
 
 class ProductListView(ListView):
@@ -52,3 +54,7 @@ def delete_product(request, pk):
         'product': product
     }
     return render(request, 'shop/delete-product.html', context)
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('shop:frontpage')

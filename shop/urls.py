@@ -14,5 +14,5 @@ urlpatterns = [
     # обновить товар
     path('update-product/<int:pk>/', views.update_product, name='update'),
     # удалить товар
-    path('delete-product/<int:pk>/', views.delete_product, name='delete'),
+    path('delete-product/<int:pk>/', views.ProductDeleteView.as_view(), name='delete'),
 ]

@@ -1,0 +1,14 @@
+{% extends "shop/base.html" %}
+
+{% block title %} Удалить товар {% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl m-10 font-bold text-center">Удалить товар</h1>
+        <form class="bg-white shadow-md m-10 w-3/5 rounded px-8 pt-6 pb-8 mb-4" method="post">
+            {% csrf_token %}
+            <p class="m-10 font-bold bg-gray-100">Вы хотите удалить {{ object }} </p>
+            <img class="block w-50 h-50 ml-10 " src="{{ product.image.url }}" alt="">
+            <input class="ml-10 m-5 font-bold bg-red-500 text-white py-2 px-5" type="submit" name="confirm" value="Удалить">
+        </form>
+{% endblock content %}
+
