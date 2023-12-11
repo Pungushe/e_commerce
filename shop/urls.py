@@ -6,9 +6,9 @@ app_name = 'shop'
 
 urlpatterns = [
     # главнвая стрница
-    path('', views.frontpage, name='frontpage'),
+    path('', views.ProductListView.as_view(), name='frontpage'),
     # подробная страница товаров
-    path('<int:pk>/', views.products, name='detail'),
+    path('<int:pk>/', views.ProductDetailView.as_view(), name='detail'),
     # добавить товар
     path('add-product', views.add_product, name='add'),
     # обновить товар

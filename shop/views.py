@@ -1,22 +1,18 @@
 from django.shortcuts import redirect, render
 from . models import Product
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, DetailView
 
 
-def frontpage(request):
-    products = Product.objects.all()
-    context = {
-        'products': products
-    }
-    return render(request, 'shop/frontpage.html', context)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'shop/frontpage.html'
+    context_object_name = 'products'
 
-def products(request, pk):
-    product = Product.objects.get(id=pk)
-
-    context = {
-        'product': product
-    }
-    return render(request, 'shop/products-detail.html', context=context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'shop/products-detail.html'
+    context_object_name = 'product'
 @login_required
 def add_product(request):
     if request.method == 'POST':
