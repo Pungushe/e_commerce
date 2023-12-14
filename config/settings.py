@@ -123,3 +123,7 @@ MEDIA_URL='/media/'
 LOGIN_REDIRECT_URL = 'shop:frontpage'
 LOGIN_URL = 'users:login'
 # LOGOUT_REDIRECT_URL = 'shop:frontpage'
+
+# stripe keys
+STRIPE_PUBLISHABLE_KEY =''
+STRIPE_SECRET_KEY = ''

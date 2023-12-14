@@ -10,13 +10,19 @@
             <p class="mt-3 text-base text-gray-600 text-center"> Можно заказать товар из любой точки мира </p>
         </div>
 
-    </main>
-    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 gap-5">
-        {% for product in products %}
-            <a href="{% url 'shop:detail' product.id %}">
-                <div class=" rounded overflow-hidden shadow-lg">
+        <div class="mt-5 justify-center p-10">
+            <h2 class="text-xl m-5 font-bold text-green-500">Поиск</h2>
+            <form action="" method="get">
+                <input class="border rounded w-1/3 py-2 px-3  text-gray-700" type="text" name="search">
+            </form>
 
-                <img class="h-30 w-50" src="{{ product.image.url }}" alt="">
+        </div>
+        
+        <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 gap-5">
+            {% for product in page_obj %}
+            <a href="{% url 'shop:detail' product.id %}">
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img class="h-50 w-50" src="{{ product.image.url }}" alt="">
                     <div class="px-6 py-4">
                         <p class="font-bold text-xl mb-2">{{ product.name }}</p>
                         <p class="font-bold text-xl text-green-500 mb-2">$ {{ product.price }}</p>
@@ -25,6 +31,27 @@
                     </div>
                 </div>
             </a>
-        {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div class="m-5">
+            <span class="p-10">
+                {% if page_obj.has_previous %}
+                <a class="bg-gray-500 text-white rounded px-2 py-4" href="?page=1">Первая страница</a>
+                <a class="bg-gray-500 text-white rounded px-2 py-4" href="?page={{ page_obj.nprevious_page_number }}">Предыдущая страница</a>
+                {% endif %}
+        </span> 
+
+        <span class="bg-green-500 text-white rounded px-2 py-2">
+            {{ page_obj }}
+        </span>
+
+        <span class="p-10">
+            {% if page_obj.has_next %}
+            <a class="bg-gray-500 text-white rounded px-2 py-4" href="?page={{ page_obj.next_page_number }}">Cледующая страница</a>
+            <a class="bg-gray-500 text-white rounded px-2 py-4" href="?page={{ page_obj.paginator.num_pages }}">Последняя страница</a>
+            {% endif %}
+        </span> 
     </div>
-{% endblock %}
+</main>
+    {% endblock %}
